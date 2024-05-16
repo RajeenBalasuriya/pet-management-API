@@ -15,4 +15,8 @@ export class Pet{
     @Column({nullable:true})
     @Field(type=>String,{nullable:true})
     type?:string;
+
+    @Column({nullable:true})
+    @Field()
+    gender:string;
 }

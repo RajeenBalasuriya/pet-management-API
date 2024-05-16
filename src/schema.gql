@@ -6,8 +6,20 @@ type Pet {
   id: Int!
   name: String!
   type: String
+  gender: String!
 }
 
 type Query {
+  getPet(id: Int!): Pet!
   pets: [Pet!]!
+}
+
+type Mutation {
+  createPet(createPetInput: CreatePetInput!): Pet!
+}
+
+input CreatePetInput {
+  name: String!
+  type: String
+  gender: String
 }
