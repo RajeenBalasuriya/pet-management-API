@@ -7,6 +7,8 @@ import { ApolloDriver } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { join } from 'path';
+import { OwnersModule } from './owners/owners.module';
+import { TelephoneModule } from './telephone/telephone.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -22,7 +24,7 @@ import { join } from 'path';
   }),GraphQLModule.forRoot({
     autoSchemaFile:join(process.cwd(),'src/schema.gql'),
     driver: ApolloDriver,
-  }),PetsModule],
+  }),PetsModule, OwnersModule, TelephoneModule],
   controllers: [AppController],
   providers: [AppService],
 })

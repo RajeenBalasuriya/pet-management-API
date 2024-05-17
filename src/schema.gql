@@ -2,24 +2,54 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Telephone {
+  id: Int!
+  telNo: Int!
+  owner: Owner!
+}
+
+type Owner {
+  id: Int!
+  telId: Int!
+  name: String!
+  pets: [Pet!]
+  telephone: Telephone
+}
+
 type Pet {
   id: Int!
   name: String!
   type: String
   gender: String!
+  ownerId: Int!
+  owner: Owner!
 }
 
 type Query {
   getPet(id: Int!): Pet!
   pets: [Pet!]!
+  owners: [Owner!]!
+  telephone: [Telephone!]!
 }
 
 type Mutation {
   createPet(createPetInput: CreatePetInput!): Pet!
+  createOwner(createOwnerInput: CreateOwnerInput!): Owner!
+  createTelephone(createTelephoneInput: CreateTelephoneInput!): Telephone!
 }
 
 input CreatePetInput {
   name: String!
   type: String
   gender: String
+  ownerId: Int!
+}
+
+input CreateOwnerInput {
+  name: String!
+  telId: Int!
+}
+
+input CreateTelephoneInput {
+  telNo: Int!
 }
